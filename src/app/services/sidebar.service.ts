@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { SideNavigationMain } from '../modalPackages/sidenavBar';
+import { SideNavigationMain, SideNavigationUrlTitle } from '../modalPackages/sidenavBar';
 import { CommonMethods } from '../commonmethod/common-method';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -29,14 +29,15 @@ export class SidebarService {
   addSideOption() {
     this.menus = []
  
-         // var pageInnerUrls: Array<SideNavigationUrlTitle> = []
-         // pageInnerUrls.push(new SideNavigationUrlTitle("add/website", " Add New Website"))
-          this.menus.push(new SideNavigationMain("Ads", "All Ads", '/ads', "", "inactive", "header", [], ""))  
+         var pageInnerUrls: Array<SideNavigationUrlTitle> = []
+         pageInnerUrls.push(new SideNavigationUrlTitle("add/advertisment", " Add New  Advertisment"))
+          this.menus.push(new SideNavigationMain("Advertisment", "All Advertisments", '/advertisment', "fa fa-puzzle-piece", "inactive", "header", pageInnerUrls, ""));  
+          this.menus.push(new SideNavigationMain("Settings", "Settings", '/settings', "fa fa-cog", "inactive", "header", [], "")); 
   }
 
 
   getMenuList() {
-    this.addSideOption()
+    this.addSideOption();
     CommonMethods.showconsole(this.tag, " Function is working ")
     return this.menus;
   }

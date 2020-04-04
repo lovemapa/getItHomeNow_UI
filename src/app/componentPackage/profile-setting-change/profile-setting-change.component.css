@@ -1,0 +1,44 @@
+.form-outer {
+    padding: 20px 0;
+}
+
+.form-outer .form-element {
+    margin-bottom: 25px;
+}
+
+.form-outer .form-element label {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.form-outer .form-element input {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 15px;
+}
+
+.form-outer .form-element .submit-btn {
+    background: #e92330;
+    border-radius: 4px;
+    text-align: center;
+    padding: 15px 10px;
+    min-width: 300px;
+    display: inline-block;
+    color: #fff;
+    margin-top: 15px;
+    text-decoration: none;
+    transition: 0.3s all;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-outer .form-element .submit-btn:hover {
+    background: #444;
+    transition: 0.3s all;
+}
+
+::placeholder {
+    color: #707070;
+}

@@ -11,24 +11,26 @@ import { MyRoutingMethods } from 'src/app/utillpackage/my-routing-methods';
   styleUrls: ['./full.component.css']
 })
 export class FullComponent implements OnInit {
-  
+
   Tag = "FullComponent"
 
   showprofile = false
   showSideBar = false
   topHeading: string
-  menu:Array<any>
-   user_Name:any 
-  
-  constructor(public router: Router,public cookiesService:CookieService,public navBarService:SidebarService,
-    public ngzone:NgZone) {
+  menu: Array<any>
+  user_Name: any
+  showBackButtun=false;
+
+  constructor(public router: Router, public cookiesService: CookieService, public navBarService: SidebarService,
+    public ngzone: NgZone) {
     this.showprofile = false
     this.showSideBar = false
-    this.menu=[]
-    this.user_Name=""
+    this.showBackButtun=false;
+    this.menu = []
+    this.user_Name = ""
     // Set Menu List From Side Bar Service 
-     this.menu =this.navBarService.getMenuList()
-     this.router.events.subscribe(value => {
+    this.menu = this.navBarService.getMenuList()
+    this.router.events.subscribe(value => {
       if (value instanceof NavigationEnd) {
 
         this.checkAndSetValue()
@@ -36,7 +38,7 @@ export class FullComponent implements OnInit {
       }
     })
 
-    this.user_Name="Avinash Kumar"
+    this.user_Name = "Avinash Kumar"
 
   }
 
@@ -89,27 +91,30 @@ export class FullComponent implements OnInit {
       this.topHeading = ""
       var currentUrl = this.router.url
       CommonMethods.showconsole(this.Tag, "Current Url:- " + currentUrl)
-      
+
       var matched = false
       this.menu.forEach((element, index) => {
         element.status = "inactive"
         if (!matched) {
-           CommonMethods.showconsole(this.Tag,"Show Element url:- "+ element.url)
+          CommonMethods.showconsole(this.Tag, "Show Element url:- " + element.url)
           if (currentUrl == element.url) {
             matched = true
             this.topHeading = element.title
             element.status = "active"
             // CommonMethods.showconsole(this.Tag, "Current main Menu Index :- " + this.currentmenuIndex)
             // CommonMethods.showconsole(this.Tag, "Current main Menu Index :- " + this.currentmenuIndex)
-            
+
           }
-        }else{
-          element.status="inactive"
+        } else {
+          element.status = "inactive"
         }
         element.urlTitleList.forEach(pageInnerUrls => {
+          this.showBackButtun=true;
           if (!matched) {
-            if (currentUrl.includes(pageInnerUrls.url) ) {
+            CommonMethods.showconsole(this.Tag, "fdasa Working")
+            if (currentUrl.includes(pageInnerUrls.url)) {
               matched = true
+             
               this.topHeading = pageInnerUrls.title
               element.status = "active"
             }
@@ -155,8 +160,8 @@ export class FullComponent implements OnInit {
 
 
   gotoRouting(index) {
-     CommonMethods.showconsole(this.Tag,"Urls"+this.menu[index].url)
-    this.router.navigate([ this.menu[index].url]);
+    CommonMethods.showconsole(this.Tag, "Urls" + this.menu[index].url)
+    this.router.navigate([this.menu[index].url]);
     this.topHeading = this.menu[index].title
   }
   // gotoSubmenuPage(oterindex: number, innerindex: number) {
@@ -165,20 +170,20 @@ export class FullComponent implements OnInit {
   //   this.topHeading = this.menus[oterindex].innerOptions[innerindex].title
   // }
 
- 
 
 
 
 
-    /**
-     * Logout Function
-     */
-    logout(){
-       CommonMethods.showconsole(this.Tag,"Logout Function is working");
-      
-       MyRoutingMethods.gotoLogin(this.router);
-    }
-    /**End */
+
+  /**
+   * Logout Function
+   */
+  logout() {
+    CommonMethods.showconsole(this.Tag, "Logout Function is working");
+
+    MyRoutingMethods.gotoLogin(this.router);
+  }
+  /**End */
 
 
   /**
@@ -193,6 +198,10 @@ export class FullComponent implements OnInit {
     }
   }
 
-
+  /**Ng Class Icon Set */
+  setNgClass(className) {
+    return className;
+  }
+  /**End */
 
 }

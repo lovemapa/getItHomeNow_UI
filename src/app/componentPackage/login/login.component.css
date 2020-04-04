@@ -144,6 +144,10 @@
         /* Chrome, Safari, Opera */
         transform: translate(-50%, -50%);
     }
+    
+    .backlayer .logo img {
+        max-width: 350px;
+    }
     /* form sections */
     
     .backlayer {

@@ -18,6 +18,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { LocationStrategy, HashLocationStrategy, DatePipe } from '@angular/common';
 import { FullComponent } from './layout/full/full.component';
 import { BlankComponent } from './layout/blank/blank.component';
+import { AddAddsComponent } from './componentPackage/add-adds/add-adds.component';
+import { ProfileSettingChangeComponent } from './componentPackage/profile-setting-change/profile-setting-change.component';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -27,7 +29,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     LoginComponent,
     DashboardComponent,
     FullComponent,
-    BlankComponent
+    BlankComponent,
+    AddAddsComponent,
+    ProfileSettingChangeComponent
   ],
   imports: [
     BrowserModule,

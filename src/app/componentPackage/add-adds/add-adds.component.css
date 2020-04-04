@@ -1,0 +1,65 @@
+.form-outer {
+    padding: 20px 0;
+}
+
+.form-outer .form-element {
+    margin-bottom: 25px;
+}
+
+.form-outer .form-element label {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.form-outer .form-element input {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 15px;
+}
+
+.form-outer .form-element .submit-btn {
+    background: #e92330;
+    border-radius: 4px;
+    text-align: center;
+    padding: 15px 10px;
+    min-width: 300px;
+    display: inline-block;
+    color: #fff;
+    margin-top: 15px;
+    text-decoration: none;
+    transition: 0.3s all;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.form-outer .form-element .submit-btn:hover {
+    background: #444;
+    transition: 0.3s all;
+}
+
+::placeholder {
+    color: #707070;
+}
+
+.add-more {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    background: #E92330;
+    border-radius: 50%;
+    top: 87px;
+    right: 24px;
+    cursor: pointer;
+}
+
+.add-more i {
+    font-size: 25px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
