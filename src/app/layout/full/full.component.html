@@ -1,0 +1,114 @@
+<div [ngClass]="{'slide': showSideBar}">
+    <div class="wrapper">
+        <div class="top-bar">
+            <div class="left-section">
+                <!-- <div class="toggle-btn" (click)="menueToggle()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div> -->
+                <div class="search-box-outer">
+                    <input name="" class="search-box" placeholder="Search.." type="text"><input class="search" value="" type="submit">
+                </div>
+            </div>
+            <div class="right-section">
+                <ul>
+                    <li>
+                        <div class="notification">
+                            <div class="navdrop-box custom-tooltip" data-name="Notification">
+                                <i class="mdi mdi-bell-ring"></i>
+                                <span class="count-notification">21</span>
+                            </div>
+                            <div class="dropdown-menu broadcast-notification">
+                                <div class="notification-header">
+                                    <h5>Notifications</h5>
+                                    <p>you have <span>21</span> unread Messages</p>
+
+                                </div>
+                                <div class="notification-message">
+                                    <ul>
+                                        <li><a href="javascript:;"><i class="mdi mdi-bell"></i>New Notification
+                                                Message<span>11:00PM</span></a></li>
+                                        <li><a href="javascript:;"><i class="mdi mdi-bell"></i>New Notification
+                                                Message<span>11:00PM</span></a></li>
+                                        <li><a href="javascript:;"><i class="mdi mdi-bell"></i>New Notification
+                                                Message<span>11:00PM</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="notification-footer">
+                                    <a href="javascript:;">View All Notifications</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="profile-settings">
+                            <div class="navdrop-box" (click)="showProflieDown()">
+                                <img src="./assets/imgs/user.jpg">
+                                <i class="fa fa-chevron-down"></i>
+                            </div>
+                            <div class="dropdown-menu" [ngClass]="{'show': showprofile}">
+                                <h5>Avinash Kumar</h5>
+                                <a href="">Account settings</a>
+                                <div class="dropdown-menu-footer">
+                                    <a (click)=" logout()"> Logout </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="side-bar">
+            <div class="side-header">
+                <a href="" class="logo-text">
+                    <div class="logo-img"><img src="./assets/imgs/logoSmall.png" /></div>
+                    <span class="logo-name">Logo</span>
+                </a>
+                <i class="toggle-switch fa " [ngClass]="getCustomCss()" (click)="menueToggle()"></i>
+            </div>
+            <perfect-scrollbar>
+                <ul class="nav-bar">
+                    <!-- <li *ngFor="let menuList of menu; let i=index;" (click)="gotoRouting(i)" [ngClass]="{'active' : menuList.status == 'active'}">
+                        <a>{{menuList.title}}</a>
+                    </li> -->
+                    <li *ngFor="let menuList of menu; let i=index;" (click)="gotoRouting(i)" [ngClass]="{'active' : menuList.status == 'active'}">
+                        <a><i class='side-icon fa fa-home'></i> <span>{{menuList.title}}</span></a>
+                    </li>
+                    <!-- <li class="active">
+                        <a><i class='side-icon fa fa-home'></i> <span>Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a><i class='side-icon fa fa-list'></i><span>Orders</span></a>
+                    </li>
+                    <li>
+                        <a><i class='side-icon fa fa-exchange-alt'></i> <span>Transactions</span></a>
+                    </li>
+                    <li>
+                        <a><i class='side-icon fa fa-shopping-cart'></i> <span>E- Commerce Sites</span></a>
+                    </li> -->
+                    <!-- <li class="child-menu">
+                        <a>Users</a>
+                        <div class="menu-wrap">
+                            <ul>
+                                <li><a>News &amp; Article</a></li>
+                                <li><a>Athletes</a></li>
+                                <li><a>Coach</a></li>
+                                <li><a>video</a></li>
+
+                            </ul>
+                        </div>
+                    </li> -->
+                </ul>
+            </perfect-scrollbar>
+        </div>
+        <div class="main-container dashboard">
+            <div class="main-title">
+                <h1>{{topHeading}}</h1>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
