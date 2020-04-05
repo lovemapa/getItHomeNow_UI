@@ -10,7 +10,7 @@ export class CommonMethods {
 
 
    /*
-              Show Error Dialog Message Common Method
+    *Show Error Dialog Message Common Method
     */
 
    static showErrorDialog(snackBar: MatSnackBar, message: string) {

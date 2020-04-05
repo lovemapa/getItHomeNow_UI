@@ -13,12 +13,12 @@ import { MyRoutingMethods } from 'src/app/utillpackage/my-routing-methods';
 })
 export class AddAddsComponent implements OnInit {
 
-  private title:string;
-  private mHeading:string;
-  private cHeading:string;
-  private body:string;
-  private contectNo:number;
-  private advertisementModel:AdvertisementModel;
+  public title:string;
+  public mHeading:string;
+  public cHeading:string;
+  public body:string;
+  public contectNo:number;
+  public advertisementModel:AdvertisementModel;
 
   constructor(public snackBar: MatSnackBar, public router: Router, public adminServiceService: AdminServiceService) { }
 

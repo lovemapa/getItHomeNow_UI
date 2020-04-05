@@ -12,9 +12,9 @@ import { MyRoutingMethods } from 'src/app/utillpackage/my-routing-methods';
 })
 export class ProfileSettingChangeComponent implements OnInit {
 
-  private oldPwd:string;
-  private newPwd:string;
-  private confirmPwd:string;
+  public oldPwd:string;
+  public newPwd:string;
+  public confirmPwd:string;
 
   
   constructor(public snackBar: MatSnackBar, public router: Router, public adminServiceService: AdminServiceService) { }

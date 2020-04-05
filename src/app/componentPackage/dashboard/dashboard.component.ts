@@ -13,8 +13,8 @@ import { MyRoutingMethods } from 'src/app/utillpackage/my-routing-methods';
 })
 export class DashboardComponent implements OnInit {
 
-  private searchString:string="";
-  private AdsList:Array<AdvertisementModel>=[];
+  public searchString:string="";
+  public AdsList:Array<AdvertisementModel>=[];
   constructor(public snackBar: MatSnackBar, public router: Router, public adminServiceService: AdminServiceService) { }
 
   ngOnInit(): void {
@@ -26,4 +26,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  showAds(){
+    // this.
+  }
 }
