@@ -39,7 +39,8 @@
     width: 32%;
     border-radius: 5px;
     text-align: center;
-    margin-right: 10px;
+    margin-right: 14px;
+    margin-bottom: 40px;
     transition: 0.3s all;
     border-bottom-left-radius: 50px;
     border-top-right-radius: 50px;
@@ -85,6 +86,7 @@
     font-weight: 800;
     padding: 6px 0;
     margin-bottom: 5px;
+    height: 32px;
     text-transform: uppercase;
 }
 
@@ -92,6 +94,7 @@
     margin-bottom: 15px;
     font-size: 22px;
     font-weight: 800;
+    height: 20px;
     text-transform: uppercase;
 }
 
@@ -101,6 +104,7 @@
     font-style: italic;
     font-weight: 800;
     padding-top: 10px;
+    height: 30px;
     text-transform: uppercase;
 }
 
@@ -116,3 +120,27 @@
 .imageLogo{
     width: 300px !important;
 }
+
+
+.cardButton {
+    position: absolute;
+    width: 500px;
+    left:0;
+    top: 180px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+  
+  .cardButton a {
+    width: 200px;
+    padding: 12px 48px;
+    text-align: center;
+    color: white;
+    border: solid 2px white;
+    z-index: 1;
+  }
+  
+  .card:hover .cardButton {
+    opacity: 1;
+  }

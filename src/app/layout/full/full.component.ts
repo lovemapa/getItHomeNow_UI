@@ -4,6 +4,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { SidebarService } from 'src/app/services/sidebar.service';
 import { MyRoutingMethods } from 'src/app/utillpackage/my-routing-methods';
+import { MyCookies } from 'src/app/utillpackage/my-cookies';
 
 @Component({
   selector: 'app-full',
@@ -20,6 +21,7 @@ export class FullComponent implements OnInit {
   menu: Array<any>
   user_Name: any
   showBackButtun = false;
+  searchTerm:string = "";
 
   constructor(public router: Router, public cookiesService: CookieService, public navBarService: SidebarService,
     public ngzone: NgZone) {
@@ -175,7 +177,7 @@ export class FullComponent implements OnInit {
    */
   logout() {
     CommonMethods.showconsole(this.Tag, "Logout Function is working");
-
+    MyCookies.deletecookies(this.cookiesService);
     MyRoutingMethods.gotoLogin(this.router);
   }
   /**End */

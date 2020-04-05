@@ -5,6 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MyRoutingMethods } from 'src/app/utillpackage/my-routing-methods';
 import { Router } from '@angular/router';
 import { AdminServiceService } from 'src/app/services/admin-service.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { MyCookies } from 'src/app/utillpackage/my-cookies';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +19,23 @@ export class LoginComponent implements OnInit {
   Tag = "LoginComponent";
   loginModel: LoginModel;
 
-  constructor(public snackBar: MatSnackBar, public router: Router, public adminServiceService: AdminServiceService) {
+  constructor(public snackBar: MatSnackBar, public router: Router, public adminServiceService: AdminServiceService,
+    public spinner: NgxSpinnerService, public cookiesService: CookieService) {
     this.loginModel = new LoginModel("", "");
+    // this.checkLoginMethod();
   }
 
   ngOnInit(): void {
+  }
+
+  /**Check Login */
+  checkLoginMethod() {
+    let logincheck = MyCookies.checkLoginStatus(this.cookiesService);
+    if (logincheck) {
+      MyRoutingMethods.gotoAds(this.router);
+    } else {
+      MyRoutingMethods.gotoLogin(this.router);
+    }
   }
 
   /**
@@ -65,16 +80,19 @@ export class LoginComponent implements OnInit {
    */
   callLoginApi() {
     if (this.validation()) {
-      this.adminServiceService.adminLoginAPI(this.loginModel.email,this.loginModel.password).subscribe(response =>{
-        if(response.success){
-           // Calling Routing Function Goto TO Dashborad 
+      this.spinner.show();
+      this.adminServiceService.adminLoginAPI(this.loginModel.email, this.loginModel.password).subscribe(response => {
+        if (response.success) {
+          this.spinner.hide();
+          // Calling Routing Function Goto TO Dashborad 
           MyRoutingMethods.gotoAds(this.router);
         }
-        else{
+        else {
+          this.spinner.hide();
           CommonMethods.showErrorDialog(this.snackBar, response.message);
         }
       })
-     
+
     }
   }
   /**End */
