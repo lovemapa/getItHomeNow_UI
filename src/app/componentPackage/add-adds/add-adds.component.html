@@ -3,27 +3,27 @@
 </div>
 <div class="form-outer">
     <div class="form-element">
-        <label>Title</label>
-        <input type="text" />
+        <label for="title" >Title</label>
+        <input placeholder="Title" type="text" id="title" [(ngModel)]="title" autocomplete="off"/>
     </div>
     <div class="form-element">
-        <label>Main Heading</label>
-        <input type="text" />
+        <label for="mHeading">Main Heading</label>
+        <input type="text" id="mHeading" [(ngModel)]="mHeading" autocomplete="off"/>
     </div>
     <div class="form-element">
-        <label>Sub Heading</label>
-        <input type="text" />
+        <label for="cHeading">Sub Heading</label>
+        <input type="text" id="cHeading" [(ngModel)]="cHeading" autocomplete="off"/>
     </div>
     <div class="form-element">
-        <label>Body</label>
-        <input type="text" />
+        <label for="body">Body</label>
+        <input type="text" id="body" [(ngModel)]="body" autocomplete="off"/>
     </div>
     <div class="form-element">
-        <label>Contact Number</label>
-        <input type="tel" />
+        <label for="contectNo">Contact Number</label>
+        <input type="tel" id="contectNo" [(ngModel)]="contectNo" autocomplete="off"/>
     </div>
     <div class="form-element" style="text-align: center;">
-        <a href="" class="submit-btn">Submit</a>
+        <a (click)="createAdvertisement()" class="submit-btn">Submit</a>
     </div>
 
 </div>

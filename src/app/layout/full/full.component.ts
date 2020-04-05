@@ -19,13 +19,13 @@ export class FullComponent implements OnInit {
   topHeading: string
   menu: Array<any>
   user_Name: any
-  showBackButtun=false;
+  showBackButtun = false;
 
   constructor(public router: Router, public cookiesService: CookieService, public navBarService: SidebarService,
     public ngzone: NgZone) {
     this.showprofile = false
     this.showSideBar = false
-    this.showBackButtun=false;
+    this.showBackButtun = false;
     this.menu = []
     this.user_Name = ""
     // Set Menu List From Side Bar Service 
@@ -36,9 +36,9 @@ export class FullComponent implements OnInit {
         this.checkAndSetValue()
 
       }
-    })
+    });
 
-    this.user_Name = "Avinash Kumar"
+    this.user_Name = "Admin"
 
   }
 
@@ -53,12 +53,7 @@ export class FullComponent implements OnInit {
    */
 
   showProflieDown() {
-    if (this.showprofile == false) {
-      this.showprofile = true;
-    } else {
-      this.showprofile = false;
-    }
-
+    this.showprofile = !this.showprofile;
   }
   /**End */
 
@@ -109,12 +104,12 @@ export class FullComponent implements OnInit {
           element.status = "inactive"
         }
         element.urlTitleList.forEach(pageInnerUrls => {
-          this.showBackButtun=true;
+          this.showBackButtun = true;
           if (!matched) {
             CommonMethods.showconsole(this.Tag, "fdasa Working")
             if (currentUrl.includes(pageInnerUrls.url)) {
               matched = true
-             
+
               this.topHeading = pageInnerUrls.title
               element.status = "active"
             }

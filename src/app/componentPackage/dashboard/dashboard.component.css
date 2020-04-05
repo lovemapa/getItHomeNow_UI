@@ -69,11 +69,10 @@
     border-top-right-radius: 50px;
 }
 
-.card-wrapper .card .Image {
-    margin-bottom: 25px;
-}
+
 
 .card-wrapper .big-stuff {
+    color: #e92330;
     font-size: 26px;
     font-weight: 800;
     letter-spacing: 2px;
@@ -83,6 +82,7 @@
 
 .card-wrapper .title-1 {
     font-size: 18px;
+    font-weight: 800;
     padding: 6px 0;
     margin-bottom: 5px;
     text-transform: uppercase;
@@ -91,7 +91,7 @@
 .card-wrapper .title-2 {
     margin-bottom: 15px;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 800;
     text-transform: uppercase;
 }
 
@@ -99,7 +99,7 @@
     color: #e92330;
     font-size: 24px;
     font-style: italic;
-    font-weight: 500;
+    font-weight: 800;
     padding-top: 10px;
     text-transform: uppercase;
 }
@@ -111,4 +111,8 @@
     color: #fff;
     background: #444;
     border-bottom-left-radius: 50px;
+}
+
+.imageLogo{
+    width: 300px !important;
 }

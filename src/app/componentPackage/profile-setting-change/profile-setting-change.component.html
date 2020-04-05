@@ -1,29 +1,17 @@
 <div class="form-outer">
-    <!-- <div class="form-element">
-        <label>Old Password</label>
-        <input type="" placeholder="" />
+    <div class="form-element">
+        <label for="oldpassword">Old Password</label>
+        <input placeholder="Old Password" type="password" id="oldpassword" [(ngModel)]="oldPwd" autocomplete="off"/>
     </div>
     <div class="form-element">
-        <label>Email</label>
-        <input type="email" placeholder="e.g john@gmail.com" />
+        <label for="npassword">New password</label>
+        <input placeholder="New Password" type="password" id="npassword" [(ngModel)]="newPwd" autocomplete="off"/>
     </div>
     <div class="form-element">
-        <label>Contact Number</label>
-        <input type="tel" placeholder="e.g 9653248710" />
-    </div> -->
-    <div class="form-element">
-        <label>Old Password</label>
-        <input type="password" />
-    </div>
-    <div class="form-element">
-        <label>New password</label>
-        <input type="password" />
-    </div>
-    <div class="form-element">
-        <label>Confirm password</label>
-        <input type="password" />
+        <label for="cpassword">Confirm password</label>
+        <input placeholder="Confirm Password" type="password" id="cpassword" [(ngModel)]="confirmPwd" autocomplete="off"/>
     </div>
     <div class="form-element" style="text-align: center;">
-        <a href="" class="submit-btn">Submit</a>
+        <a (click)="updateAdminDetails()" class="submit-btn">Submit</a>
     </div>
 </div>

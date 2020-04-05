@@ -1,3 +1,3 @@
 export class MyConstants {
-    static BASEURL = "";
+    static BASEURL = "http://localhost:8081/api/";
 }

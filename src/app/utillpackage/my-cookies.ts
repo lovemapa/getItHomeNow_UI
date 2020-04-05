@@ -1,30 +1,26 @@
 import { CookieService } from "ngx-cookie-service";
 import { CommonMethods } from '../commonmethod/common-method';
-import { CookiesModal } from '../modalPackages/cookies';
+import { CookiesModel } from '../modalPackages/cookies';
 
 
 export class MyCookies {
  
-    static saveLoginDataInCookies(cookieService: CookieService, cookiesModal:CookiesModal) {
-        cookieService.set('UserId',cookiesModal.userId, 365,'/');
-        cookieService.set('Session',cookiesModal.session, 365,'/');
-        cookieService.set('Auth',cookiesModal.auth, 365,'/');
-        cookieService.set('AccountType',cookiesModal.accountType, 365,'/');
-        cookieService.set('UserPublicId',cookiesModal.userPublidId, 365,'/');
-        cookieService.set('userName', cookiesModal.fullName, 365,'/');
-      
+    static saveLoginDataInCookies(cookieService: CookieService, cookiesModel:CookiesModel) {
+        cookieService.set('_id',cookiesModel._id,365,'/');
+        cookieService.set('email',cookiesModel.email,365,'/');
+        cookieService.set('token',cookiesModel.token,365,'/');
     }
   
 
     static checkLoginStatus(cookieService: CookieService): boolean {
-        var cookieExists: boolean = cookieService.check('UserId')
-        cookieExists = cookieService.get('UserId') != ""
+        var cookieExists: boolean = cookieService.check('_id');
+        cookieExists = cookieService.get('_id') != "";
         if (cookieExists) {
-            cookieExists = cookieService.check('Auth');
-            cookieExists = cookieService.get('Auth') != ""
+            cookieExists = cookieService.check('email');
+            cookieExists = cookieService.get('email') != "";
             if (cookieExists) {
-                cookieExists = cookieService.check('Session');
-                cookieExists = cookieService.get('Session') != ""
+                cookieExists = cookieService.check('token');
+                cookieExists = cookieService.get('token') != "";
                 if (cookieExists) {
                     return true;
                 } else {
@@ -38,25 +34,16 @@ export class MyCookies {
         }
     }
 
-    static getUserId(cookieService: CookieService): string {
-        return cookieService.get('UserId');
+    static getId(cookieService: CookieService): string {
+        return cookieService.get('_id');
     }
-    static getUserPublicId(cookieService: CookieService): string {
-        return cookieService.get('UserPublicId');
+    static getEmaild(cookieService: CookieService): string {
+        return cookieService.get('email');
     }
-    static getUserName(cookieService: CookieService): string {
-        return cookieService.get('userName');
+    static getToken(cookieService: CookieService): string {
+        return cookieService.get('token');
     }
-    static getUserType(cookieService: CookieService): string {
-        return cookieService.get('AccountType');
-    }
-    static getAuthorization(cookieService: CookieService): string {
-        return cookieService.get('Auth');
-    }
-    static getSessionTime(cookieService: CookieService): string {
-        return cookieService.get('Session');
-    }
-   
+       
 
     static getExpiryTime() {
         let date = new Date()

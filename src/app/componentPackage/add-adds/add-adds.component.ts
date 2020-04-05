@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { AdminServiceService } from 'src/app/services/admin-service.service';
+import { AdvertisementModel } from 'src/app/modalPackages/advertisement';
+import { CommonMethods } from 'src/app/commonmethod/common-method';
+import { MyRoutingMethods } from 'src/app/utillpackage/my-routing-methods';
 
 @Component({
   selector: 'app-add-adds',
@@ -7,9 +13,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddAddsComponent implements OnInit {
 
-  constructor() { }
+  private title:string;
+  private mHeading:string;
+  private cHeading:string;
+  private body:string;
+  private contectNo:number;
+  private advertisementModel:AdvertisementModel;
+
+  constructor(public snackBar: MatSnackBar, public router: Router, public adminServiceService: AdminServiceService) { }
 
   ngOnInit(): void {
   }
 
+  createAdvertisement(){
+    
+    this.advertisementModel= new AdvertisementModel();
+    this.advertisementModel.name=this.title;
+    this.advertisementModel.mainContent=this.mHeading+"%"+this.cHeading+"%"+this.body;
+    this.advertisementModel.phone=this.contectNo;
+    this.adminServiceService.createAdvertisement(this.advertisementModel).subscribe(response =>{
+      if(response.success){
+        CommonMethods.showSuccessDialog(this.snackBar,response.message);
+        MyRoutingMethods.gotoAds(this.router);
+      }
+      else{
+        CommonMethods.showErrorDialog(this.snackBar,response.message);
+      }
+    })
+
+    
+  }
 }
