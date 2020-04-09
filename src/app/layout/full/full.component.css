@@ -393,7 +393,7 @@ body.no-scroll {
 }
 
 .dropdown-menu-footer a {
-    background: #ddd;
+    /* background: #ddd; */
     padding: 12px;
     cursor: pointer;
 }
