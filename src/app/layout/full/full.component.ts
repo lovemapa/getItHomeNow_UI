@@ -13,23 +13,25 @@ import { MyCookies } from 'src/app/utillpackage/my-cookies';
 })
 export class FullComponent implements OnInit {
 
-  Tag = "FullComponent"
+  Tag = "FullComponent";
 
-  showprofile = false
-  showSideBar = false
-  topHeading: string
-  menu: Array<any>
-  user_Name: any
+  showprofile = false;
+  showSideBar = false;
+  topHeading: string;
+  menu: Array<any>;
+  user_Name: any;
   showBackButtun = false;
-  searchTerm:string = "";
+  searchTerm: string = "";
+  mobileView = false;
 
   constructor(public router: Router, public cookiesService: CookieService, public navBarService: SidebarService,
     public ngzone: NgZone) {
     this.showprofile = false
     this.showSideBar = false
     this.showBackButtun = false;
-    this.menu = []
-    this.user_Name = ""
+    this.mobileView = false;
+    this.menu = [];
+    this.user_Name = "";
     // Set Menu List From Side Bar Service 
     this.menu = this.navBarService.getMenuList()
     this.router.events.subscribe(value => {
@@ -75,6 +77,11 @@ export class FullComponent implements OnInit {
     }
   }
 
+  toggleButton() {
+    this.mobileView = !this.mobileView;
+
+  }
+
 
   /**
    * 
@@ -83,12 +90,12 @@ export class FullComponent implements OnInit {
    */
 
   checkAndSetValue() {
+    this.showprofile = false
     CommonMethods.showconsole(this.Tag, "  checkAndSetValue() ")
     this.ngzone.run(() => {
       this.topHeading = ""
       var currentUrl = this.router.url
       CommonMethods.showconsole(this.Tag, "Current Url:- " + currentUrl)
-
       var matched = false
       this.menu.forEach((element, index) => {
         element.status = "inactive"
@@ -96,27 +103,24 @@ export class FullComponent implements OnInit {
           CommonMethods.showconsole(this.Tag, "Show Element url:- " + element.url)
           if (currentUrl == element.url) {
             matched = true
+            // this.toggleButton();
             this.topHeading = element.title
             element.status = "active"
-            // CommonMethods.showconsole(this.Tag, "Current main Menu Index :- " + this.currentmenuIndex)
-            // CommonMethods.showconsole(this.Tag, "Current main Menu Index :- " + this.currentmenuIndex)
 
           }
         } else {
           element.status = "inactive"
         }
-        element.urlTitleList.forEach(pageInnerUrls => {
-          this.showBackButtun = true;
-          if (!matched) {
-            CommonMethods.showconsole(this.Tag, "fdasa Working")
-            if (currentUrl.includes(pageInnerUrls.url)) {
-              matched = true
-
-              this.topHeading = pageInnerUrls.title
-              element.status = "active"
-            }
-          }
-        });
+        // element.urlTitleList.forEach(pageInnerUrls => {
+        //   if (!matched) {
+        //     CommonMethods.showconsole(this.Tag, "fdasa Working")
+        //     if (currentUrl.includes(pageInnerUrls.url)) {
+        //       matched = true
+        //       this.topHeading = pageInnerUrls.title
+        //       element.status = "active"
+        //     }
+        //   }
+        // });
         // element.innerOptions.forEach((innerElement, innerIndex) => {
         //   innerElement.status = "inactive"
 

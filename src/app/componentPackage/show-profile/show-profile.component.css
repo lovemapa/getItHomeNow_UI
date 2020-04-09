@@ -1,0 +1,169 @@
+label.cabinet {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #707070;
+    padding: 2px;
+    margin: auto;
+    z-index: 1;
+}
+
+label.cabinet input.file {
+    position: absolute;
+    opacity: 0;
+    -moz-opacity: 0;
+    width: 100%;
+    top: 0;
+    height: 100%;
+    left: 0;
+    cursor: pointer;
+    padding: 0;
+}
+
+.floating-label {
+    width: fit-content;
+    margin-top: 19px;
+}
+
+.cabinet .img-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+#upload-demo {
+    width: 250px;
+    height: 250px;
+    padding-bottom: 25px;
+}
+
+figure figcaption {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    text-shadow: 0 0 10px #000;
+    text-align: justify;
+}
+
+figure figcaption i {
+    font-size: 25px;
+}
+
+.profile-section {
+    border: none;
+}
+
+.profile-name {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.profile-name h2 {
+    font-size: 25px;
+    padding-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.profile-name p {
+    font-size: 22px;
+    padding-top: 4px;
+}
+
+.profile-name a {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 10px 15px;
+    background: #e92330;
+    min-width: 180px;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-outer {
+    padding: 20px 0;
+}
+
+.form-outer .form-element {
+    margin-bottom: 25px;
+    display: block;
+}
+
+.form-outer .col-12 {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-outer .col-12 .form-element {
+    width: 48%;
+}
+
+.form-outer .form-element.submit-btn {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.form-outer .form-element label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    text-align: left;
+    display: block;
+}
+
+.form-outer .form-element input {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 15px;
+}
+
+.form-outer .form-element .submit-btn {
+    background: #e92330;
+    border-radius: 4px;
+    text-align: center;
+    padding: 12px 10px;
+    min-width: 300px;
+    display: inline-block;
+    color: #fff;
+    margin-top: 15px;
+    text-decoration: none;
+    transition: 0.3s all;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.form-outer .form-element .submit-btn:hover {
+    background: #444;
+    transition: 0.3s all;
+}
+
+::placeholder {
+    color: #707070;
+}
+
+@media (max-width: 991px){
+    label.cabinet{height: 180px;width: 180px;}
+}
+
+@media (max-width: 767px){
+    label.cabinet{height: 150px;width: 150px;}
+    figure figcaption i{font-size: 20px;}
+    .profile-name h2{font-size: 22px;letter-spacing: 1px;margin-bottom: 0px;}
+    .profile-name p{font-size: 18px;}
+    .form-outer .form-element{margin-bottom: 20px;}
+    .form-outer .form-element .submit-btn{min-width: auto;padding: 10px 15px;width: 100%;}
+    .form-outer .form-element:last-child{margin-bottom: 0;}
+    .form-outer{padding-bottom: 0;}
+}

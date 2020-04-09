@@ -6,6 +6,7 @@ import { FullComponent } from "./layout/full/full.component"
 import { BlankComponent } from "./layout/blank/blank.component"
 import { AddAddsComponent } from "./componentPackage/add-adds/add-adds.component"
 import { ProfileSettingChangeComponent } from "./componentPackage/profile-setting-change/profile-setting-change.component"
+import{ShowProfileComponent} from"./componentPackage/show-profile/show-profile.component"
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: LoginComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
       { path: 'advertisment', component: DashboardComponent },
       { path: 'add/advertisment', component: AddAddsComponent },
       { path: 'settings', component: ProfileSettingChangeComponent },
+      { path: 'show/profile', component: ShowProfileComponent },
 
     ]
   },

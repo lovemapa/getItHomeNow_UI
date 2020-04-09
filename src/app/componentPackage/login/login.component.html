@@ -1,16 +1,18 @@
 <main id="wrapper">
 
     <div class="backlayer">
-        <div class="layerLeft" style="background-image:url(./assets/imgs/mainBackGround.png); background-repeat:no-repeat;">
+        <div class="layerLeft"
+            style="background-image:url(./assets/imgs/mainBackGround.png); background-repeat:no-repeat;">
             <figure class="logo"><img alt="" src="./assets/imgs/mainLogo.png"></figure>
         </div>
-        <div class="layerRight" style="background-image:url(./assets/imgs/mainBackGround.png); background-repeat:no-repeat;">
+        <div class="layerRight"
+            style="background-image:url(./assets/imgs/mainBackGround.png); background-repeat:no-repeat;">
             <figure class="logo"><img alt="" src="./assets/imgs/mainLogo.png"></figure>
         </div>
     </div>
     <div class="panels">
         <div class="innerpanel">
-            <div class="left">
+            <!-- <div class="left">
                 <div class="formcontainer">
                     <h5>Forgot your password? </h5>
                     <h6>Enter The E-mail Address Associated With Your Account.</h6>
@@ -27,7 +29,7 @@
                         <a id="moveright" href="javascript:void(0)" class="linkright linkslide">Back to Login</a>
                     </form>
                 </div>
-            </div>
+            </div> -->
             <div class="right">
                 <div class="formcontainer">
                     <h5>login</h5>
@@ -35,25 +37,30 @@
 
                     <form class="login100-form">
                         <div class="field">
-                            <input type="text" name="email" id="email" placeholder=" " autocomplete="off" [(ngModel)]="loginModel.email" required>
+                            <input type="text" name="email" id="email" placeholder=" " autocomplete="off"
+                                [(ngModel)]="loginModel.email" required>
                             <label for="email">Email</label>
                             <i class="fieldIcon fa fa-user" aria-hidden="true"></i>
                         </div>
 
                         <div class="field">
-                            <input type="password" name="password" id=password placeholder=" " [(ngModel)]="loginModel.password" required>
+                            <input type="password" name="password" id=password placeholder=" "
+                                [(ngModel)]="loginModel.password" required>
                             <label for="password">Password</label>
                             <i class="fieldIcon fa fa-lock" aria-hidden="true"></i>
                             <!-- <i class="fieldIcon password " id="myiconconfirm" aria-hidden="true" (click)="showPassword()"></i> -->
                         </div>
 
                         <div class="field">
-                            <button type="submit" class="submit button" (click)="callLoginApi()"><span></span>Log In</button>
+                            <button type="submit" class="submit button" (click)="callLoginApi()"><span></span>Log
+                                In</button>
                         </div>
 
                         <div class="field d-flex spcl-field">
-                            <label class="checkbox leftlabel"><input type="checkbox"><i class="input-helper"></i>Remember me</label>
-                            <a id="moveleft" href="javascript:void(0)" class="linkright linkslide">Forgot Password?</a>
+                            <!-- <label class="checkbox leftlabel"><input type="checkbox"><i
+                                    class="input-helper"></i>Remember me</label> -->
+                            <a id="moveleft" href="javascript:void(0)" class="linkright linkslide"
+                                (click)="CallModalForm(content)">Forgot Password?</a>
                         </div>
                     </form>
 
@@ -62,3 +69,25 @@
         </div>
     </div>
 </main>
+
+
+
+<ng-template #content>
+    <div class="modal-body" style="text-align: center; ">
+        <div class="close-icon" (click)="JoinAndClose()"><i class="fa fa-times"></i></div>
+        <div class="title-heading">
+            <h3>Forgot Password?</h3>
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing</p> -->
+        </div>
+        <form class="login100-form">
+            <div class="form-element">
+                <label>Email</label>
+                <input placeholder="Enter Email" type="email" autocomplete="off" />
+            </div>
+
+            <div class="field" style="margin-bottom: 0;">
+                <button type="submit" class="submit button"><span></span>Submit</button>
+            </div>
+        </form>
+    </div>
+</ng-template>

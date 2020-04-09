@@ -8,6 +8,7 @@ import { AdminServiceService } from 'src/app/services/admin-service.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MyCookies } from 'src/app/utillpackage/my-cookies';
 import { CookieService } from 'ngx-cookie-service';
+import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +18,13 @@ import { CookieService } from 'ngx-cookie-service';
 export class LoginComponent implements OnInit {
 
   Tag = "LoginComponent";
+  modalReference: NgbModalRef
   loginModel: LoginModel;
 
   constructor(public snackBar: MatSnackBar, public router: Router, public adminServiceService: AdminServiceService,
-    public spinner: NgxSpinnerService, public cookiesService: CookieService) {
+    public spinner: NgxSpinnerService, public cookiesService: CookieService, public modalService: NgbModal) {
     this.loginModel = new LoginModel("", "");
-    // this.checkLoginMethod();
+    this.checkLoginMethod();
   }
 
   ngOnInit(): void {
@@ -96,4 +98,29 @@ export class LoginComponent implements OnInit {
     }
   }
   /**End */
+
+  /**
+        * 
+        * Open  Modal Function 
+        */
+  openModal(content) {
+    this.modalReference = this.modalService.open(content, { centered: true });
+    //  this. modalReference.componentInstance.actionMessage = this.actionmessage;
+  }
+
+  /**
+   * 
+   * close Modal Function 
+   */
+
+  JoinAndClose() {
+    this.modalReference.close();
+  }
+
+
+  /**CallIng Modal Function */
+
+  CallModalForm(content) {
+    this.openModal(content)
+  }
 }
