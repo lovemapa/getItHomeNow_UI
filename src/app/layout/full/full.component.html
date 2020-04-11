@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="search-box-outer">
-                    <input name="searchBar" id="searchBarforAds" class="search-box" value="" placeholder="Search.." type="text" [(ngModel)]="searchTerm" autocomplete="off"><input autocomplete="off" class="search" value="" type="submit">
+                    <input name="searchBar" id="searchBarforAd" class="search-box" value="" placeholder="Search.." type="text" [(ngModel)]="searchTerm" autocomplete="off"><input autocomplete="off" class="search" value="" type="submit">
                 </div>
             </div>
             <div class="right-section">
@@ -49,7 +49,7 @@
                         <div class="profile-settings">
                             <div class="navdrop-box" style="display: flex;
                             justify-content: center;">
-                                <img src="./assets/imgs/user.jpg">
+                                <img src="{{profilePic}}">
                                 <h5 style="    position: relative;
                                 top: 5px; margin: 2px;font-weight: bold;">{{user_Name}}</h5>
                                 <i style="position: relative; top: 10px; margin-left: 4px;" class="fa fa-chevron-down"></i>

@@ -1,5 +1,9 @@
 <div class="search-box-outer">
-    <input name="searchBar" id="searchBarforAds" class="search-box" value="" placeholder="Search.." type="text" autocomplete="off"><input autocomplete="off" class="search" value="" type="submit">
+    <input name="searchBar"  id="searchBarforAds" class="search-box" value="" placeholder="Search.." type="text" [(ngModel)]="searchString" (keyup.enter)="getAdvertisment()" autocomplete="off">
+    <button autocomplete="off" class="search" value="" type="submit" (click)="getAdvertisment()"></button>
+</div>
+<div  *ngIf="!showTable">
+    <h1>No Advertisement Found</h1>
 </div>
 <div class="card-wrapper" *ngIf="showTable">
     <div class=" card" *ngFor="let ads of adsList">
@@ -26,15 +30,16 @@
         </div>
         <div class="action-btn">
             <div class="btns">
-                <a class="edit-btn" (click)="AddMOdalFuntion(content,'updateAddvertisment')"> <i class="mdi mdi-border-color"></i></a>
+                <a class="edit-btn" (click)="AddModalFuntion(content,'updateAddvertisment',ads)"> <i class="mdi mdi-border-color"></i></a>
                 <a class="delete-btn" (click)="deleteModalCall(deleteModal,ads._id)"><i class="mdi mdi-delete"></i></a>
             </div>
         </div>
 
     </div>
+</div>
 
 
-    <div class="add-more" (click)="AddMOdalFuntion(content,'addAddvertisment')">
+    <div class="add-more" (click)="AddModalFuntion(content,'addAddvertisment')">
         <i class="mdi mdi-plus"></i>
     </div>
 
@@ -73,7 +78,7 @@
                 </div>
 
                 <div class="form-element submit-btn" style="text-align: center;">
-                    <a (click)="createAdvertisement()" class="submit-btn">{{showbutton}}</a>
+                    <a (click)="hitRequiredFunction(methodToCall)" class="submit-btn">{{showbutton}}</a>
                 </div>
             </div>
         </div>
@@ -90,7 +95,7 @@
                 <p>Are you sure, you want to Delete?</p>
                 <div class="modal-btns">
                     <a class="cancel-btn" (click)="JoinAndClose()">Cancel</a>
-                    <a class="submit-btn">Submit</a>
+                    <a class="submit-btn" (click)="deleteAdvertisement()">Submit</a>
                 </div>
             </div>
         </div>

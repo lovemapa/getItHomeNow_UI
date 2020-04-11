@@ -6,9 +6,12 @@ import { CookiesModel } from '../modalPackages/cookies';
 export class MyCookies {
  
     static saveLoginDataInCookies(cookieService: CookieService, cookiesModel:CookiesModel) {
-        cookieService.set('_id',cookiesModel._id,365,'/');
-        cookieService.set('email',cookiesModel.email,365,'/');
-        cookieService.set('token',cookiesModel.token,365,'/');
+        cookieService.set('_id',cookiesModel._id,1,'/');
+        cookieService.set('email',cookiesModel.email,1,'/');
+        cookieService.set('token',cookiesModel.token,1,'/');
+        cookieService.set('profilePic',cookiesModel.profilePic,1,'/');
+        cookieService.set('contact',cookiesModel.contact,1,'/');
+        
     }
   
 

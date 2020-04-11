@@ -3,7 +3,7 @@ import { MyCookies } from '../utillpackage/my-cookies';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { MyConstants } from '../utillpackage/constant';
 import { CommonMethods } from '../commonmethod/common-method';
 import { CookiesModel } from '../modalPackages/cookies';
@@ -20,7 +20,7 @@ export class AdminServiceService {
   private deleteAdvertisementUrl: string = MyConstants.BASEURL + "admin/deleteAdvertisment";
   private getAdvertisementUrl: string = MyConstants.BASEURL + "admin/getAdvertisments?name=";
   private userForgotPasswordUrl: string = MyConstants.BASEURL + "admin/forget-password";
-  private updateAdminPwdUrl: string = MyConstants.BASEURL + "admin/changePassword";
+  private updateAdminPwdUrl: string = MyConstants.BASEURL + "admin/updateProfile";
 
 
   private userId: string;
@@ -28,10 +28,20 @@ export class AdminServiceService {
   header: HttpHeaders;
   userIdRequestParam: HttpParams;
 
+  private profilePic = new BehaviorSubject<string>('');
+  readonly currentProfilePic=this.profilePic.asObservable();
 
   constructor(private http: HttpClient, public cookiesServices: CookieService) { }
 
 
+  setCurrentProfilePic(profilePicUrl:string){
+    this.profilePic.next(profilePicUrl);
+  }
+
+  getCurrentProfilePic(): Observable<string>{
+    return this.profilePic.asObservable();
+  }
+  
   /**
     * method to set token for header
     */
@@ -57,6 +67,7 @@ export class AdminServiceService {
         // login successful if there's a token in thedata response
         if (response.success && response.data.token) {
           MyCookies.saveLoginDataInCookies(this.cookiesServices, new CookiesModel(response.data));
+          this.profilePic.next(this.cookiesServices.get('profilePic'));
         }
         return response;
       }));
@@ -90,15 +101,17 @@ export class AdminServiceService {
 
   /**
     * mw=ethod to create new advertisement
-    * @param adId advertisement Id
+    * @param advertiseId advertisement Id
    */
-  deleteAdvertisement(adId: string): Observable<any> {
+  deleteAdvertisement(advertiseId: string): Observable<any> {
     //for setting token in headers
     this.setHeader();
     const httpOptions = {
       headers: this.header
     };
-    return this.http.patch(this.deleteAdvertisementUrl, adId, httpOptions);
+    let data: any = {};
+    data.advertiseId = advertiseId;
+    return this.http.patch(this.deleteAdvertisementUrl, data, httpOptions);
   }
 
   /**
@@ -111,8 +124,9 @@ export class AdminServiceService {
     const httpOptions = {
       headers: this.header
     };
-    this.getAdvertisementUrl=this.getAdvertisementUrl+searchString;
-    return this.http.get(this.getAdvertisementUrl, httpOptions);
+    let searchurl:string='';
+    searchurl=this.getAdvertisementUrl+searchString;
+    return this.http.get(searchurl, httpOptions);
   }
 
   /**
@@ -125,7 +139,13 @@ export class AdminServiceService {
     const httpOptions = {
       headers: this.header
     };
-    return this.http.patch(this.updateAdminPwdUrl, adminDetails, httpOptions);
+    return this.http.patch<any>(this.updateAdminPwdUrl, adminDetails, httpOptions).pipe(map(response=>{
+      if (response.success && response.data.token) {
+        MyCookies.saveLoginDataInCookies(this.cookiesServices, new CookiesModel(response.data));
+        this.profilePic.next(this.cookiesServices.get('profilePic'));
+      }
+      return response;
+    }));
 
   }
 

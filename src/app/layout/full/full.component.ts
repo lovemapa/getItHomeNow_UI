@@ -5,6 +5,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { SidebarService } from 'src/app/services/sidebar.service';
 import { MyRoutingMethods } from 'src/app/utillpackage/my-routing-methods';
 import { MyCookies } from 'src/app/utillpackage/my-cookies';
+import { MyConstants } from 'src/app/utillpackage/constant';
+import { AdminServiceService } from 'src/app/services/admin-service.service';
 
 @Component({
   selector: 'app-full',
@@ -22,9 +24,10 @@ export class FullComponent implements OnInit {
   user_Name: any;
   showBackButtun = false;
   searchTerm: string = "";
+  profilePic: any;
   mobileView = false;
 
-  constructor(public router: Router, public cookiesService: CookieService, public navBarService: SidebarService,
+  constructor(public router: Router, public cookiesService: CookieService, public navBarService: SidebarService, public adminServiceService: AdminServiceService,
     public ngzone: NgZone) {
     this.showprofile = false
     this.showSideBar = false
@@ -41,13 +44,23 @@ export class FullComponent implements OnInit {
 
       }
     });
-
     this.user_Name = "Admin"
-
   }
 
 
   ngOnInit(): void {
+    this.adminServiceService.currentProfilePic.subscribe(profilePicUrl => {
+      this.profilePic = profilePicUrl;
+      if (profilePicUrl == '') {
+        this.profilePic = this.cookiesService.get('profilePic');
+      }
+      if (!this.profilePic) {
+        this.profilePic = "./assets/imgs/default-admin.jpg";
+      }
+      else {
+        this.profilePic = MyConstants.serverURL + this.profilePic;
+      }
+    });
   }
 
   /**
@@ -55,7 +68,6 @@ export class FullComponent implements OnInit {
    * Profile Dialog Show Image
    * 
    */
-
   showProflieDown() {
     this.showprofile = !this.showprofile;
   }
@@ -68,8 +80,6 @@ export class FullComponent implements OnInit {
  */
 
   menueToggle() {
-    CommonMethods.showconsole(this.Tag, "Working")
-
     if (this.showSideBar == false) {
       this.showSideBar = true;
     } else {
@@ -91,16 +101,13 @@ export class FullComponent implements OnInit {
 
   checkAndSetValue() {
     this.showprofile = false
-    CommonMethods.showconsole(this.Tag, "  checkAndSetValue() ")
     this.ngzone.run(() => {
       this.topHeading = ""
       var currentUrl = this.router.url
-      CommonMethods.showconsole(this.Tag, "Current Url:- " + currentUrl)
       var matched = false
       this.menu.forEach((element, index) => {
         element.status = "inactive"
         if (!matched) {
-          CommonMethods.showconsole(this.Tag, "Show Element url:- " + element.url)
           if (currentUrl == element.url) {
             matched = true
             // this.toggleButton();
@@ -113,7 +120,6 @@ export class FullComponent implements OnInit {
         }
         // element.urlTitleList.forEach(pageInnerUrls => {
         //   if (!matched) {
-        //     CommonMethods.showconsole(this.Tag, "fdasa Working")
         //     if (currentUrl.includes(pageInnerUrls.url)) {
         //       matched = true
         //       this.topHeading = pageInnerUrls.title
@@ -161,7 +167,6 @@ export class FullComponent implements OnInit {
 
 
   gotoRouting(index) {
-    CommonMethods.showconsole(this.Tag, "Urls" + this.menu[index].url)
     this.router.navigate([this.menu[index].url]);
     this.topHeading = this.menu[index].title
   }
@@ -180,7 +185,6 @@ export class FullComponent implements OnInit {
    * Logout Function
    */
   logout() {
-    CommonMethods.showconsole(this.Tag, "Logout Function is working");
     MyCookies.deletecookies(this.cookiesService);
     MyRoutingMethods.gotoLogin(this.router);
   }

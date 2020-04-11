@@ -82,11 +82,11 @@
         <form class="login100-form">
             <div class="form-element">
                 <label>Email</label>
-                <input placeholder="Enter Email" type="email" autocomplete="off" />
+                <input placeholder="Enter Email" type="email" #inputEmail autocomplete="off" />
             </div>
 
             <div class="field" style="margin-bottom: 0;">
-                <button type="submit" class="submit button"><span></span>Submit</button>
+                <button type="submit" class="submit button" (click)="forgetPassword(inputEmail.value)">Submit</button>
             </div>
         </form>
     </div>

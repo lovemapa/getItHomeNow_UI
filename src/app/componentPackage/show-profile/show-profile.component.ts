@@ -9,6 +9,7 @@ import { MyCookies } from 'src/app/utillpackage/my-cookies';
 import { CookiesModel } from 'src/app/modalPackages/cookies';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { MyConstants } from 'src/app/utillpackage/constant';
 
 @Component({
   selector: 'app-show-profile',
@@ -20,7 +21,7 @@ export class ShowProfileComponent implements OnInit {
   Tag="ShowProfileComponent";
   imageurl:any;
   modalReference:NgbModalRef;
-  selectedImageUrl:any;
+  selectedImageUrl:File ;
   public oldPwd:string;
   public newPwd:string;
   public confirmPwd:string;
@@ -30,9 +31,15 @@ export class ShowProfileComponent implements OnInit {
 
   constructor(public modalService:NgbModal,public snackBar: MatSnackBar, public router: Router, public adminServiceService: AdminServiceService,
     public cookiesService:CookieService,public spiner:NgxSpinnerService) {
-    this.imageurl="./assets/imgs/user.jpg" ;
-    this.selectedImageUrl="";
+    this.selectedImageUrl=null;
     this.checkLoginMethod();
+    this.imageurl=this.cookiesService.get('profilePic');
+    if(!this.imageurl){
+      this.imageurl="./assets/imgs/default-admin.jpg";
+    }
+    else{
+      this.imageurl=MyConstants.serverURL+this.imageurl;
+    }
    }
   
   ngOnInit(): void {
@@ -57,7 +64,11 @@ export class ShowProfileComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = (innerEvent) => {
         this.imageurl = (<FileReader>innerEvent.target).result;
+
         this.selectedImageUrl = event.target.files[0];
+        const adminDetails: FormData = new FormData();
+        adminDetails.append('file', this.selectedImageUrl, this.selectedImageUrl.name);
+        this.updateAdminDetails(adminDetails);
       }
     }
   }
@@ -77,7 +88,9 @@ export class ShowProfileComponent implements OnInit {
        */
     
       JoinAndClose() {
+        if(this.modalReference){
         this.modalReference.close();
+        }
       }
 
   showProileModal(content){
@@ -86,8 +99,7 @@ export class ShowProfileComponent implements OnInit {
 
 
   // CHnage Proilfe 
-
-  updateAdminDetails(){
+  updatePassword() {
     if(this.newPwd.toString()!='' && this.newPwd.toUpperCase().match(this.confirmPwd.toUpperCase())){
       this.spiner.show();
       let adminDetails:any={};
@@ -98,8 +110,12 @@ export class ShowProfileComponent implements OnInit {
           this.spiner.hide();
           this.JoinAndClose();
           CommonMethods.showSuccessDialog(this.snackBar,response.message);
+          MyCookies.deletecookies(this.cookiesService);
+          MyRoutingMethods.gotoLogin(this.router);
+          CommonMethods.showSuccessDialog(this.snackBar,response.message+" please Login Again");
         }
         else{
+          this.spiner.hide();
           CommonMethods.showErrorDialog(this.snackBar,response.message);
         }
       });
@@ -113,5 +129,18 @@ export class ShowProfileComponent implements OnInit {
     }
 
   }
-  
+
+  updateAdminDetails(adminDetails:any){
+    this.spiner.show();
+    this.adminServiceService.updateDetails(adminDetails).subscribe(response =>{
+      this.spiner.hide();
+      if(response.success){
+        this.adminServiceService.setCurrentProfilePic(this.cookiesService.get('profilePic'));
+        CommonMethods.showSuccessDialog(this.snackBar,response.message);
+      }
+      else{
+        CommonMethods.showErrorDialog(this.snackBar,response.message);
+      }
+    });
+  }
 }

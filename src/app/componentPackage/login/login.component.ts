@@ -93,8 +93,7 @@ export class LoginComponent implements OnInit {
           this.spinner.hide();
           CommonMethods.showErrorDialog(this.snackBar, response.message);
         }
-      })
-
+      });
     }
   }
   /**End */
@@ -112,15 +111,30 @@ export class LoginComponent implements OnInit {
    * 
    * close Modal Function 
    */
-
   JoinAndClose() {
     this.modalReference.close();
   }
 
-
   /**CallIng Modal Function */
-
   CallModalForm(content) {
     this.openModal(content)
+  }
+
+  /**
+   * method to send revocery mail on specific email
+   * @param email email to send recovery link
+   */
+  forgetPassword(email:string){
+    this.spinner.show();
+    this.adminServiceService.forgotPassword(email).subscribe(response => {
+      this.spinner.hide();
+      this.JoinAndClose();
+      if (response.success) {
+        CommonMethods.showSuccessDialog(this.snackBar, response.message);
+      }
+      else {
+        CommonMethods.showErrorDialog(this.snackBar, response.message);
+      }
+    });
   }
 }
