@@ -49,13 +49,12 @@ export class MyCookies {
        
 
     static getExpiryTime() {
-        let date = new Date()
-        date.setDate(date.getDate() +1)
-        return date
+        let date = new Date();
+        date.setDate(date.getDate() +1);
+        return date;
     }
 
     static deletecookies(cookieService: CookieService) {
-         CommonMethods.showconsole("MyCookies"," Function is working  into cookies method ")
         cookieService.deleteAll();
 
     }

@@ -15,7 +15,7 @@ export class CommonMethods {
 
    static showErrorDialog(snackBar: MatSnackBar, message: string) {
     snackBar.open(message, "", {
-        duration: 2000,
+        duration: 3000,
         verticalPosition: 'top',
         horizontalPosition: 'end',
         panelClass: ['blue-snackbar']
@@ -28,7 +28,7 @@ export class CommonMethods {
 
 static showSuccessDialog(snackBar: MatSnackBar, message: string) {
     snackBar.open(message, "", {
-        duration: 2000,
+        duration: 3000,
         panelClass: ['sucess-snackbar'],
         verticalPosition: 'top',
         horizontalPosition: 'end',

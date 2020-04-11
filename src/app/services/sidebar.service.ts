@@ -31,13 +31,12 @@ export class SidebarService {
  
          var pageInnerUrls: Array<SideNavigationUrlTitle> = []
           this.menus.push(new SideNavigationMain("Advertisment", "All Advertisments", '/advertisment', "fa fa-puzzle-piece", "inactive", "header", pageInnerUrls, ""));  
-          this.menus.push(new SideNavigationMain("Settings", "Settings", '/show/profile', "fa fa-cog", "inactive", "header", [], "")); 
+          this.menus.push(new SideNavigationMain("View Profile", "View Profile", '/show/profile', "fa fa-cog", "inactive", "header", [], "")); 
   }
 
 
   getMenuList() {
     this.addSideOption();
-    CommonMethods.showconsole(this.tag, " Function is working ")
     return this.menus;
   }
 }
