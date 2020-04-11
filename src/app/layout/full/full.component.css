@@ -323,9 +323,12 @@ body.no-scroll {
 
 .profile-settings img {
     max-width: 30px;
+    max-height: 30px;
     border-radius: 50%;
     vertical-align: middle;
     margin-right: 4px;
+    width: 30px;
+    height: 30px;
 }
 
 .profile-settings:hover .dropdown-menu {
@@ -590,6 +593,7 @@ body.no-scroll {
 .side-bar .logo-img img {
     max-width: 60px;
     margin-left: -5px;
+    vertical-align: bottom !important;
 }
 
 .side-bar .logo-text .logo-name {
