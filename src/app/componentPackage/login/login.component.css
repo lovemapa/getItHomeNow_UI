@@ -133,20 +133,25 @@
     /* ends */
     
     .backlayer .logo {
-        display: table;
+        /* display: table;
         position: relative;
         z-index: 1;
         top: 50%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
+        left: 50%; */
+        display: table;
+        position: relative;
+        z-index: 1;
+        top: 13px;
+        padding: 10px 26px;
+        /* -ms-transform: translate(-50%, -50%); */
         /* IE 9 */
-        -webkit-transform: translate(-50%, -50%);
+        /* -webkit-transform: translate(-50%, -50%); */
         /* Chrome, Safari, Opera */
-        transform: translate(-50%, -50%);
+        /* transform: translate(-50%, -50%); */
     }
     
     .backlayer .logo img {
-        max-width: 350px;
+        max-width: 150px;
     }
     /* form sections */
     
@@ -162,7 +167,7 @@
         height: 100%;
         position: absolute;
         right: 0;
-        width: 50%;
+        width: 45%;
     }
     
     .backlayer .layerLeft:before {
@@ -184,7 +189,7 @@
         height: 100%;
         left: 0;
         position: absolute;
-        width: 50%;
+        width: 55%;
     }
     
     .backlayer .layerRight:before {
@@ -221,13 +226,13 @@
         height: 100%;
         position: absolute;
         right: 0;
-        width: 50%;
+        width: 45%;
         background: #fff;
         z-index: 1;
     }
     
     .panels {
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        /* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); */
         height: 100%;
         margin-left: 50%;
         max-height: 100%;
@@ -435,18 +440,32 @@
         top: 3px;
         height: calc(100% - 6px);
     }
-
-    .login100-form .form-element{margin-top: 20px;}
-    .login100-form .form-element label{font-size: 14px;
+    
+    .login100-form .form-element {
+        margin-top: 20px;
+    }
+    
+    .login100-form .form-element label {
+        font-size: 14px;
         margin-bottom: 4px;
         text-align: left;
-        display: block; text-transform: none;}
-    .login100-form .form-element input{width: 100%;border: 1px solid #ccc;border-radius: 4px;padding: 8px 15px;}
+        display: block;
+        text-transform: none;
+    }
+    
+    .login100-form .form-element input {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px 15px;
+    }
     /**End*/
     /** media queries **/
     
     @media only screen and (max-width:990px) {
-        input{background: none;}
+        input {
+            background: none;
+        }
         .backlayer .layerLeft {
             width: 100%;
             height: 240px;
@@ -530,6 +549,18 @@
             -webkit-transform: translate(0, 0);
             /* Chrome, Safari, Opera */
             transform: translate(0, 0);
+        }
+        .backlayer .logo {
+            display: table;
+            position: relative;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            /* IE 9 */
+            -webkit-transform: translate(-50%, -50%);
+            /* Chrome, Safari, Opera */
+            transform: translate(-50%, -50%);
         }
         .backlayer .logo img {
             width: 180px;
@@ -626,13 +657,28 @@
         .field_cover .errorlist {
             padding: 6px;
         }
-        .field{margin-bottom: 20px;}
-        .formcontainer{max-width: 100%;background: #fff;margin: 0;}
-        .formcontainer h5{text-align: center;}
-        .formcontainer form{max-width: 550px;margin: 0 auto;}
+        .field {
+            margin-bottom: 20px;
+        }
+        .formcontainer {
+            max-width: 100%;
+            background: #fff;
+            margin: 0;
+        }
+        .formcontainer h5 {
+            text-align: center;
+        }
+        .formcontainer form {
+            max-width: 550px;
+            margin: 0 auto;
+        }
     }
-
-    @media (max-width: 500px){
-        form{margin-top: 0;}
-        .modal-body{padding: 20px 15px;}
+    
+    @media (max-width: 500px) {
+        form {
+            margin-top: 0;
+        }
+        .modal-body {
+            padding: 20px 15px;
+        }
     }
