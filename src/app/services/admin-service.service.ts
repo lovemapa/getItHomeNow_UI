@@ -41,7 +41,7 @@ export class AdminServiceService {
   getCurrentProfilePic(): Observable<string>{
     return this.profilePic.asObservable();
   }
-  
+
   /**
     * method to set token for header
     */
@@ -63,7 +63,6 @@ export class AdminServiceService {
     data.password = password;
     return this.http.post<any>(this.loginUrl, data)
       .pipe(map(response => {
-        CommonMethods.showconsole("login", response);
         // login successful if there's a token in thedata response
         if (response.success && response.data.token) {
           MyCookies.saveLoginDataInCookies(this.cookiesServices, new CookiesModel(response.data));

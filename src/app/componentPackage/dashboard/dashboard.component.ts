@@ -56,7 +56,10 @@ export class DashboardComponent implements OnInit {
   }
 
 /**GEt AdverTisMEnt List */
-  getAdvertisment(){
+  getAdvertisment(searchTerm?:string){
+    if(searchTerm || searchTerm == ''){
+      this.searchString=searchTerm;
+    }
     this.spinner.show();
     this.adminServiceService.getAdvertisement(this.searchString).subscribe(response => {
       if (response.success) {
@@ -83,8 +86,13 @@ export class DashboardComponent implements OnInit {
     * 
     * Open  Modal Function 
     */
-  openModal(content) {
+  openModal(content, context?: string) {
     this.modalReference = this.modalService.open(content, { centered: true });
+    if (this.modalHeading.match("Update Advertisement")) {
+      this.modalReference.result.then((result) => { }, (reson) => {
+        this.reset();
+      });
+    }
     //  this. modalReference.componentInstance.actionMessage = this.actionmessage;
   }
   deleteModal(content) {
@@ -99,12 +107,13 @@ export class DashboardComponent implements OnInit {
 
   JoinAndClose() {
     this.modalReference.close();
+    this.reset();
   }
 
 
   /**CallIng Modal Function */
 
-  AddModalFuntion(content,onclickButton:any,ad?:AdvertisementModel) 
+  AddModalFuntion(content,onclickButton:string,ad?:AdvertisementModel) 
   {
      if(onclickButton == 'addAddvertisment'){
       this.modalHeading="Add Advertisement";
@@ -116,7 +125,7 @@ export class DashboardComponent implements OnInit {
       this.showbutton="Update";
       this.methodToCall='updateSelectedAd()';
      }
-    this.openModal(content)
+    this.openModal(content);
   }
 
 

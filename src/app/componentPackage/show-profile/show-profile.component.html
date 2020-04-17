@@ -34,7 +34,7 @@
             </div>
             <div class="form-element">
                 <label for="cpassword">Confirm password</label>
-                <input placeholder="Confirm Password" type="password" id="cpassword" [(ngModel)]="confirmPwd" autocomplete="off" />
+                <input placeholder="Confirm Password" type="password" id="cpassword" [(ngModel)]="confirmPwd" (keyup.enter)="updatePassword()" autocomplete="off" />
             </div>
             <div class="form-element" style="text-align: center;">
                 <a (click)="updatePassword()" class="submit-btn">Submit</a>
