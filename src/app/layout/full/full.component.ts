@@ -167,6 +167,7 @@ export class FullComponent implements OnInit {
 
 
   gotoRouting(index) {
+    this.toggleButton()
     this.router.navigate([this.menu[index].url]);
     this.topHeading = this.menu[index].title
   }
