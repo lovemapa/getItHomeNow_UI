@@ -2355,8 +2355,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyConstants", function() { return MyConstants; });
 class MyConstants {
 }
-MyConstants.BASEURL = "http://localhost:8081/api/";
-MyConstants.serverURL = "http://localhost:8081";
+MyConstants.BASEURL = "http://3.21.83.36:8081/api/";
+MyConstants.serverURL = "http://3.21.83.36:8081";
 
 
 /***/ }),

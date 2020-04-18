@@ -4383,8 +4383,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, MyConstants);
     };
 
-    MyConstants.BASEURL = "http://localhost:8081/api/";
-    MyConstants.serverURL = "http://localhost:8081";
+    MyConstants.BASEURL = "http://3.21.83.36:8081/api/";
+    MyConstants.serverURL = "http://3.21.83.36:8081";
     /***/
   },
 
