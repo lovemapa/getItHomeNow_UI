@@ -11,7 +11,9 @@
 <div *ngIf="!showTable">
     <h1>No Advertisement Found</h1>
 </div>
+
 <div class="card-wrapper" *ngIf="showTable">
+
     <div class=" card" *ngFor="let ads of adsList">
         <div class="topStatic">
             <h2>Store,Estate,Garage Sales</h2>
@@ -24,7 +26,7 @@
                 <ng-container>
                     <p class="title-1">{{createContent(ads.mainContent)[0]}} </p>
                     <p class="title-2">{{createContent(ads.mainContent)[1]}}</p>
-                    <p class="title-3">{{createContent(ads.mainContent)[2]}}</p>
+                    <p class="title-3" [ngStyle]="createContent(ads.mainContent)[2].length > 25 && { 'font-size': '9px' }">{{createContent(ads.mainContent)[2]}}</p>
                 </ng-container>
             </div>
         </div>
@@ -42,6 +44,12 @@
         </div>
 
     </div>
+</div>
+<!-- Pagination -->
+<div class="pagination-wrapper">
+    <button class="paginate_btn previous " (click)="previous()" [ngClass]="{'disabled': previousButton}" [disabled]="previousButton">Previous</button>
+    <a class="paginate_btn " *ngFor=" let page of paggination" [ngClass]="{'current': page.status == true}" (click)="pageNumberClick(page.pageNo)">{{page.pageNo}}</a>
+    <button class="paginate_btn next" (click)="next()" [ngClass]="{'disabled': nextButton}" [disabled]="nextButton">Next</button>
 </div>
 
 

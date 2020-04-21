@@ -117,14 +117,14 @@ export class AdminServiceService {
     * mw=ethod to create new advertisement
     * @param searchString string to search in advertisements
   */
-  getAdvertisement(searchString: string): Observable<any> {
+  getAdvertisement(searchString: string,pageNo:number): Observable<any> {
     //for setting token in headers
     this.setHeader();
     const httpOptions = {
       headers: this.header
     };
     let searchurl:string='';
-    searchurl=this.getAdvertisementUrl+searchString;
+    searchurl=this.getAdvertisementUrl+searchString+"&page="+pageNo;
     return this.http.get(searchurl, httpOptions);
   }
 

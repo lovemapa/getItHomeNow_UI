@@ -245,7 +245,8 @@ input:focus+label {
     border: 1px solid transparent;
 }
 
-@media (max-width: 767px){
-    .modal-body{padding: 30px 20px;}
-    
+@media (max-width: 767px) {
+    .modal-body {
+        padding: 30px 20px;
+    }
 }
