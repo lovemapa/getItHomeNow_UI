@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
   constructor(public snackBar: MatSnackBar, public spinner: NgxSpinnerService,
     public cookiesService: CookieService, public router: Router, public adminServiceService: AdminServiceService, public modalService: NgbModal) {
     this.showTable = false;
-    this.adsList = []
+    this.adsList = [];
     this.modalHeading = "";
     this.showbutton = "";
     this.previousButton = true;
@@ -76,6 +76,11 @@ export class DashboardComponent implements OnInit {
     if (searchTerm || searchTerm == '') {
       this.searchString = searchTerm;
     }
+
+     if(this.searchString.trim().length !=0)
+     {
+      this.isLoadingPaggition=false;
+     }
     this.spinner.show();
     this.adminServiceService.getAdvertisement(this.searchString, this.pageNumber).subscribe(response => {
       if (response.success) {
@@ -94,6 +99,7 @@ export class DashboardComponent implements OnInit {
         }
         this.lastPageNumber=response.totalPages;
         if (this.isLoadingPaggition == false) {
+          this.paggination=[];
            CommonMethods.showconsole(this.Tag,"Function Is woking Once Time ")
           
           for (var i = 0; i < response.totalPages; i++) {
