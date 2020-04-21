@@ -915,7 +915,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           var ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r8.getAdvertisment("");
+          return ctx_r8.clickOnshowAll();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Show All Ads");
@@ -1534,15 +1534,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function getAdvertisment(searchTerm) {
           var _this2 = this;
 
-          this.adsList = [];
-
-          if (searchTerm || searchTerm == '') {
-            this.searchString = searchTerm;
-          }
-
-          if (this.searchString.trim().length != 0) {
-            this.isLoadingPaggition = false;
-          }
+          this.adsList = []; // if (searchTerm || searchTerm == '') {
+          //   this.searchString = searchTerm;
+          // }
+          //  if(this.searchString.trim().length !=0)
+          //  {
+          //   this.isLoadingPaggition=false;
+          //  }
 
           this.spinner.show();
           this.adminServiceService.getAdvertisement(this.searchString, this.pageNumber).subscribe(function (response) {
@@ -1596,6 +1594,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               _this2.spinner.hide();
             }, 200);
           });
+        }
+      }, {
+        key: "clickOnshowAll",
+        value: function clickOnshowAll() {
+          this.pageNumber = 1;
+          this.searchString = "";
+          src_app_commonmethod_common_method__WEBPACK_IMPORTED_MODULE_2__["CommonMethods"].showconsole(this.Tag, "isLoadingPaggition:- " + this.isLoadingPaggition);
+          this.isLoadingPaggition = false;
+          src_app_commonmethod_common_method__WEBPACK_IMPORTED_MODULE_2__["CommonMethods"].showconsole(this.Tag, "after isLoadingPaggition:- " + this.isLoadingPaggition);
+          this.getAdvertisment("");
+        }
+      }, {
+        key: "onKeypressSearch",
+        value: function onKeypressSearch() {
+          this.pageNumber = 1;
+          this.isLoadingPaggition = false;
+          src_app_commonmethod_common_method__WEBPACK_IMPORTED_MODULE_2__["CommonMethods"].showconsole(this.Tag, "after isLoadingPaggition:- Function IS working  " + this.isLoadingPaggition);
+          this.getAdvertisment("");
         }
       }, {
         key: "createContent",
@@ -1902,9 +1918,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function DashboardComponent_Template_input_ngModelChange_3_listener($event) {
             return ctx.searchString = $event;
           })("keyup.enter", function DashboardComponent_Template_input_keyup_enter_3_listener() {
-            return ctx.getAdvertisment();
+            return ctx.onKeypressSearch();
           })("keyup", function DashboardComponent_Template_input_keyup_3_listener() {
-            return ctx.getAdvertisment();
+            return ctx.onKeypressSearch();
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1912,7 +1928,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "button", 4);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DashboardComponent_Template_button_click_4_listener() {
-            return ctx.getAdvertisment();
+            return ctx.onKeypressSearch();
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "i", 5);

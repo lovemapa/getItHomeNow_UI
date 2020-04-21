@@ -73,14 +73,14 @@ export class DashboardComponent implements OnInit {
   /**GEt AdverTisMEnt List */
   getAdvertisment(searchTerm?: string) {
     this.adsList = [];
-    if (searchTerm || searchTerm == '') {
-      this.searchString = searchTerm;
-    }
+    // if (searchTerm || searchTerm == '') {
+    //   this.searchString = searchTerm;
+    // }
 
-     if(this.searchString.trim().length !=0)
-     {
-      this.isLoadingPaggition=false;
-     }
+    //  if(this.searchString.trim().length !=0)
+    //  {
+    //   this.isLoadingPaggition=false;
+    //  }
     this.spinner.show();
     this.adminServiceService.getAdvertisement(this.searchString, this.pageNumber).subscribe(response => {
       if (response.success) {
@@ -127,6 +127,23 @@ export class DashboardComponent implements OnInit {
       }, 200);
     });
   }
+
+
+  clickOnshowAll(){
+    this.pageNumber=1;
+    this.searchString=""
+     CommonMethods.showconsole(this.Tag,"isLoadingPaggition:- "+this.isLoadingPaggition)
+     this.isLoadingPaggition=false;
+     CommonMethods.showconsole(this.Tag,"after isLoadingPaggition:- "+this.isLoadingPaggition)
+    this.getAdvertisment("");
+  }
+  
+onKeypressSearch(){
+  this.pageNumber=1;
+  this.isLoadingPaggition=false;
+  CommonMethods.showconsole(this.Tag,"after isLoadingPaggition:- Function IS working  "+this.isLoadingPaggition)
+  this.getAdvertisment("");
+}
 
   createContent(content: string): Array<string> {
     let contentArray: Array<string> = content.split("%");

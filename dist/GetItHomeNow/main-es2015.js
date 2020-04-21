@@ -477,7 +477,7 @@ function DashboardComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DashboardComponent_div_1_Template_button_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r8.getAdvertisment(""); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DashboardComponent_div_1_Template_button_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r8.clickOnshowAll(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Show All Ads");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -749,12 +749,13 @@ class DashboardComponent {
     /**GEt AdverTisMEnt List */
     getAdvertisment(searchTerm) {
         this.adsList = [];
-        if (searchTerm || searchTerm == '') {
-            this.searchString = searchTerm;
-        }
-        if (this.searchString.trim().length != 0) {
-            this.isLoadingPaggition = false;
-        }
+        // if (searchTerm || searchTerm == '') {
+        //   this.searchString = searchTerm;
+        // }
+        //  if(this.searchString.trim().length !=0)
+        //  {
+        //   this.isLoadingPaggition=false;
+        //  }
         this.spinner.show();
         this.adminServiceService.getAdvertisement(this.searchString, this.pageNumber).subscribe(response => {
             if (response.success) {
@@ -798,6 +799,20 @@ class DashboardComponent {
                 this.spinner.hide();
             }, 200);
         });
+    }
+    clickOnshowAll() {
+        this.pageNumber = 1;
+        this.searchString = "";
+        src_app_commonmethod_common_method__WEBPACK_IMPORTED_MODULE_2__["CommonMethods"].showconsole(this.Tag, "isLoadingPaggition:- " + this.isLoadingPaggition);
+        this.isLoadingPaggition = false;
+        src_app_commonmethod_common_method__WEBPACK_IMPORTED_MODULE_2__["CommonMethods"].showconsole(this.Tag, "after isLoadingPaggition:- " + this.isLoadingPaggition);
+        this.getAdvertisment("");
+    }
+    onKeypressSearch() {
+        this.pageNumber = 1;
+        this.isLoadingPaggition = false;
+        src_app_commonmethod_common_method__WEBPACK_IMPORTED_MODULE_2__["CommonMethods"].showconsole(this.Tag, "after isLoadingPaggition:- Function IS working  " + this.isLoadingPaggition);
+        this.getAdvertisment("");
     }
     createContent(content) {
         let contentArray = content.split("%");
@@ -1015,10 +1030,10 @@ DashboardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, DashboardComponent_div_1_Template, 3, 0, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "input", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function DashboardComponent_Template_input_ngModelChange_3_listener($event) { return ctx.searchString = $event; })("keyup.enter", function DashboardComponent_Template_input_keyup_enter_3_listener() { return ctx.getAdvertisment(); })("keyup", function DashboardComponent_Template_input_keyup_3_listener() { return ctx.getAdvertisment(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function DashboardComponent_Template_input_ngModelChange_3_listener($event) { return ctx.searchString = $event; })("keyup.enter", function DashboardComponent_Template_input_keyup_enter_3_listener() { return ctx.onKeypressSearch(); })("keyup", function DashboardComponent_Template_input_keyup_3_listener() { return ctx.onKeypressSearch(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "button", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DashboardComponent_Template_button_click_4_listener() { return ctx.getAdvertisment(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DashboardComponent_Template_button_click_4_listener() { return ctx.onKeypressSearch(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "i", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
