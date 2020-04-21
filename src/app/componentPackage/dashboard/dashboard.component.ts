@@ -116,7 +116,9 @@ export class DashboardComponent implements OnInit {
         MyCookies.deletecookies(this.cookiesService);
         MyRoutingMethods.gotoLogin(this.router);
       }
-      this.spinner.hide();
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 200);
     });
   }
 
