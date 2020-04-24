@@ -419,8 +419,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       providers: [{
         provide: ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_11__["PERFECT_SCROLLBAR_CONFIG"],
         useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-      }, // { provide: LocationStrategy, useClass: HashLocationStrategy },
-      ngx_cookie_service__WEBPACK_IMPORTED_MODULE_13__["CookieService"], _angular_common__WEBPACK_IMPORTED_MODULE_14__["DatePipe"]],
+      }, {
+        provide: _angular_common__WEBPACK_IMPORTED_MODULE_14__["LocationStrategy"],
+        useClass: _angular_common__WEBPACK_IMPORTED_MODULE_14__["HashLocationStrategy"]
+      }, ngx_cookie_service__WEBPACK_IMPORTED_MODULE_13__["CookieService"], _angular_common__WEBPACK_IMPORTED_MODULE_14__["DatePipe"]],
       imports: [[_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["BrowserAnimationsModule"], ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_11__["PerfectScrollbarModule"], _material_material__WEBPACK_IMPORTED_MODULE_10__["MaterialModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"], ngx_spinner__WEBPACK_IMPORTED_MODULE_12__["NgxSpinnerModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_8__["HttpClientModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_9__["NgbModule"]]]
     });
 
@@ -442,8 +444,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           providers: [{
             provide: ngx_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_11__["PERFECT_SCROLLBAR_CONFIG"],
             useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-          }, // { provide: LocationStrategy, useClass: HashLocationStrategy },
-          ngx_cookie_service__WEBPACK_IMPORTED_MODULE_13__["CookieService"], _angular_common__WEBPACK_IMPORTED_MODULE_14__["DatePipe"]],
+          }, {
+            provide: _angular_common__WEBPACK_IMPORTED_MODULE_14__["LocationStrategy"],
+            useClass: _angular_common__WEBPACK_IMPORTED_MODULE_14__["HashLocationStrategy"]
+          }, ngx_cookie_service__WEBPACK_IMPORTED_MODULE_13__["CookieService"], _angular_common__WEBPACK_IMPORTED_MODULE_14__["DatePipe"]],
           bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
         }]
       }], null, null);
