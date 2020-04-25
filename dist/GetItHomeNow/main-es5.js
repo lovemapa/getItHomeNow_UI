@@ -120,10 +120,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       path: '',
       component: _layout_full_full_component__WEBPACK_IMPORTED_MODULE_4__["FullComponent"],
       children: [{
-        path: 'advertisement',
+        path: 'promotions',
         component: _componentPackage_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_2__["DashboardComponent"]
       }, {
-        path: 'add/advertisment',
+        path: 'add/promotions',
         component: _componentPackage_add_adds_add_adds_component__WEBPACK_IMPORTED_MODULE_6__["AddAddsComponent"]
       }, {
         path: 'settings',
@@ -932,7 +932,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "No Advertisement Found");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "No Promotion Found");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1633,7 +1633,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             centered: true
           });
 
-          if (this.modalHeading.match("Update Advertisement")) {
+          if (this.modalHeading.match("Update Promotions")) {
             this.modalReference.result.then(function (result) {}, function (reson) {
               _this3.reset();
             });
@@ -1663,13 +1663,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "AddModalFuntion",
         value: function AddModalFuntion(content, onclickButton, ad) {
-          if (onclickButton == 'addAddvertisment') {
-            this.modalHeading = "Add Advertisement";
+          if (onclickButton == 'addPromotions') {
+            this.modalHeading = "Add Promotion";
             this.showbutton = "Add";
             this.methodToCall = 'createAdvertisement()';
           } else {
             this.setSelectedAd(ad);
-            this.modalHeading = "Update Advertisement";
+            this.modalHeading = "Update Promotion";
             this.showbutton = "Update";
             this.methodToCall = 'updateSelectedAd()';
           }
@@ -1952,7 +1952,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             var _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](12);
 
-            return ctx.AddModalFuntion(_r4, "addAddvertisment");
+            return ctx.AddModalFuntion(_r4, "addPromotions");
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "i", 10);
@@ -4574,7 +4574,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function addSideOption() {
           this.menus = [];
           var pageInnerUrls = [];
-          this.menus.push(new _modalPackages_sidenavBar__WEBPACK_IMPORTED_MODULE_1__["SideNavigationMain"]("Advertisement", "All Advertisement", '/advertisement', "fa fa-puzzle-piece", "inactive", "header", pageInnerUrls, ""));
+          this.menus.push(new _modalPackages_sidenavBar__WEBPACK_IMPORTED_MODULE_1__["SideNavigationMain"]("Promotions", "All Promotions", '/promotions', "fa fa-puzzle-piece", "inactive", "header", pageInnerUrls, ""));
           this.menus.push(new _modalPackages_sidenavBar__WEBPACK_IMPORTED_MODULE_1__["SideNavigationMain"]("View Profile", "View Profile", '/show/profile', "fa fa-cog", "inactive", "header", [], ""));
         }
       }, {
@@ -4782,7 +4782,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "gotoAds",
         value: function gotoAds(router) {
-          router.navigate(['advertisement']);
+          router.navigate(['promotions']);
         }
       }]);
 

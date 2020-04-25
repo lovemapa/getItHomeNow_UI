@@ -60,8 +60,8 @@ const routes = [
         path: '',
         component: _layout_full_full_component__WEBPACK_IMPORTED_MODULE_4__["FullComponent"],
         children: [
-            { path: 'advertisement', component: _componentPackage_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_2__["DashboardComponent"] },
-            { path: 'add/advertisment', component: _componentPackage_add_adds_add_adds_component__WEBPACK_IMPORTED_MODULE_6__["AddAddsComponent"] },
+            { path: 'promotions', component: _componentPackage_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_2__["DashboardComponent"] },
+            { path: 'add/promotions', component: _componentPackage_add_adds_add_adds_component__WEBPACK_IMPORTED_MODULE_6__["AddAddsComponent"] },
             { path: 'settings', component: _componentPackage_profile_setting_change_profile_setting_change_component__WEBPACK_IMPORTED_MODULE_7__["ProfileSettingChangeComponent"] },
             { path: 'show/profile', component: _componentPackage_show_profile_show_profile_component__WEBPACK_IMPORTED_MODULE_8__["ShowProfileComponent"] },
         ]
@@ -485,7 +485,7 @@ function DashboardComponent_div_1_Template(rf, ctx) { if (rf & 1) {
 function DashboardComponent_div_6_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "No Advertisement Found");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "No Promotion Found");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
@@ -824,7 +824,7 @@ class DashboardComponent {
       */
     openModal(content, context) {
         this.modalReference = this.modalService.open(content, { centered: true });
-        if (this.modalHeading.match("Update Advertisement")) {
+        if (this.modalHeading.match("Update Promotions")) {
             this.modalReference.result.then((result) => { }, (reson) => {
                 this.reset();
             });
@@ -845,14 +845,14 @@ class DashboardComponent {
     }
     /**CallIng Modal Function */
     AddModalFuntion(content, onclickButton, ad) {
-        if (onclickButton == 'addAddvertisment') {
-            this.modalHeading = "Add Advertisement";
+        if (onclickButton == 'addPromotions') {
+            this.modalHeading = "Add Promotion";
             this.showbutton = "Add";
             this.methodToCall = 'createAdvertisement()';
         }
         else {
             this.setSelectedAd(ad);
-            this.modalHeading = "Update Advertisement";
+            this.modalHeading = "Update Promotion";
             this.showbutton = "Update";
             this.methodToCall = 'updateSelectedAd()';
         }
@@ -1042,7 +1042,7 @@ DashboardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, DashboardComponent_div_7_Template, 2, 1, "div", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, DashboardComponent_div_8_Template, 6, 9, "div", 8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DashboardComponent_Template_div_click_9_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r33); const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](12); return ctx.AddModalFuntion(_r4, "addAddvertisment"); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function DashboardComponent_Template_div_click_9_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r33); const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](12); return ctx.AddModalFuntion(_r4, "addPromotions"); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "i", 10);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, DashboardComponent_ng_template_11_Template, 32, 7, "ng-template", null, 11, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
@@ -2485,7 +2485,7 @@ class SidebarService {
     addSideOption() {
         this.menus = [];
         var pageInnerUrls = [];
-        this.menus.push(new _modalPackages_sidenavBar__WEBPACK_IMPORTED_MODULE_1__["SideNavigationMain"]("Advertisement", "All Advertisement", '/advertisement', "fa fa-puzzle-piece", "inactive", "header", pageInnerUrls, ""));
+        this.menus.push(new _modalPackages_sidenavBar__WEBPACK_IMPORTED_MODULE_1__["SideNavigationMain"]("Promotions", "All Promotions", '/promotions', "fa fa-puzzle-piece", "inactive", "header", pageInnerUrls, ""));
         this.menus.push(new _modalPackages_sidenavBar__WEBPACK_IMPORTED_MODULE_1__["SideNavigationMain"]("View Profile", "View Profile", '/show/profile', "fa fa-cog", "inactive", "header", [], ""));
     }
     getMenuList() {
@@ -2604,7 +2604,7 @@ class MyRoutingMethods {
         router.navigate(['home']);
     }
     static gotoAds(router) {
-        router.navigate(['advertisement']);
+        router.navigate(['promotions']);
     }
 }
 

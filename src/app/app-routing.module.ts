@@ -14,8 +14,8 @@ const routes: Routes = [
     path: '',
     component: FullComponent,
     children: [
-      { path: 'advertisement', component: DashboardComponent },
-      { path: 'add/advertisment', component: AddAddsComponent },
+      { path: 'promotions', component: DashboardComponent },
+      { path: 'add/promotions', component: AddAddsComponent },
       { path: 'settings', component: ProfileSettingChangeComponent },
       { path: 'show/profile', component: ShowProfileComponent },
 

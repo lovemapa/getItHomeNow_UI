@@ -156,7 +156,7 @@ onKeypressSearch(){
     */
   openModal(content, context?: string) {
     this.modalReference = this.modalService.open(content, { centered: true });
-    if (this.modalHeading.match("Update Advertisement")) {
+    if (this.modalHeading.match("Update Promotions")) {
       this.modalReference.result.then((result) => { }, (reson) => {
         this.reset();
       });
@@ -182,13 +182,13 @@ onKeypressSearch(){
   /**CallIng Modal Function */
 
   AddModalFuntion(content, onclickButton: string, ad?: AdvertisementModel) {
-    if (onclickButton == 'addAddvertisment') {
-      this.modalHeading = "Add Advertisement";
+    if (onclickButton == 'addPromotions') {
+      this.modalHeading = "Add Promotion";
       this.showbutton = "Add";
       this.methodToCall = 'createAdvertisement()';
     } else {
       this.setSelectedAd(ad);
-      this.modalHeading = "Update Advertisement";
+      this.modalHeading = "Update Promotion";
       this.showbutton = "Update";
       this.methodToCall = 'updateSelectedAd()';
     }

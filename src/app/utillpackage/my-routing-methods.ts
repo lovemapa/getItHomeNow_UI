@@ -7,7 +7,7 @@ export class MyRoutingMethods {
         router.navigate(['home']);
     }
     static gotoAds(router: Router) {
-        router.navigate(['advertisement']);
+        router.navigate(['promotions']);
     }
   
 }

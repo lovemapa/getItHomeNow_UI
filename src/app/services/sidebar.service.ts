@@ -30,7 +30,7 @@ export class SidebarService {
     this.menus = []
  
          var pageInnerUrls: Array<SideNavigationUrlTitle> = []
-          this.menus.push(new SideNavigationMain("Advertisement", "All Advertisement", '/advertisement', "fa fa-puzzle-piece", "inactive", "header", pageInnerUrls, ""));  
+          this.menus.push(new SideNavigationMain("Promotions", "All Promotions", '/promotions', "fa fa-puzzle-piece", "inactive", "header", pageInnerUrls, ""));  
           this.menus.push(new SideNavigationMain("View Profile", "View Profile", '/show/profile', "fa fa-cog", "inactive", "header", [], "")); 
   }
 
