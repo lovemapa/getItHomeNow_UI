@@ -40,7 +40,7 @@
 }
 
 .card-wrapper .card {
-    width: calc(33.3% - 10px);
+    width: calc(24.3% - 10px);
     border-radius: 5px;
     text-align: center;
     margin-right: 10px;
@@ -288,7 +288,7 @@
     transition: .3s;
     width: 100%;
     max-width: 300px;
-    background-color: #fff;
+    /* background-color: #fff; */
     border: 1px solid #d7d7e3;
     position: relative;
     max-width: 300px;
