@@ -336,6 +336,54 @@ body.no-scroll {
     transition: 0.3s all;
     display: unset;
 }
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    width: 180px;
+    max-width: 180px;
+    border-radius: 5px;
+    background: #fff;
+    right: 0;
+    left: unset;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.12);
+    cursor: default;
+    transform: scaleY(0);
+    transition: 0.3s all;
+    display: unset;
+    transform-origin: top;
+}
+
+.dropdown-menu h5 {
+    font-size: 14px;
+    color: #2d96f1;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+.dropdown-menu a {
+    font-size: 14px;
+    padding: 15px;
+    display: block;
+    transition: 0.3s all;
+}
+
+.dropdown-menu a:hover {
+    background: #f1f1f1;
+    transition: 0.3s all;
+}
+
+.dropdown-menu-footer a {
+    /* background: #ddd; */
+    padding: 12px;
+    cursor: pointer;
+}
+
+.dropdown-menu.show {
+    transform: scaleY(1);
+    transition: 0.3s all;
+    display: unset;
+}
 
 .notification .mdi-bell-ring {
     font-size: 25px;

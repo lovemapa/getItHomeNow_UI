@@ -40,7 +40,7 @@
 }
 
 .card-wrapper .card {
-    width: calc(24.3% - 10px);
+    width: calc(33.3% - 10px);
     border-radius: 5px;
     text-align: center;
     margin-right: 10px;
